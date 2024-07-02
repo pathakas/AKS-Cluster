@@ -36,4 +36,8 @@ resource "azurerm_kubernetes_cluster" "default" {
   tags = {
     environment = "Demo"
   }
+
+  depends_on = [
+    azurerm_resource_group.default
+  ]
 }
