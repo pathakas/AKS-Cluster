@@ -1,0 +1,49 @@
+# This is a basic workflow that is manually triggered
+
+name: 0. Upgrade Helm Chart with new Containers
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+# schedule will runn tuesdays and thur, in a chronjob fasion
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+  #  schedule:
+    #  - cron: '0 0 * * 2,4' # Runs at midnight on Tuesdays and Thursdays
+
+# Env information to pass into our actions Containers
+env:
+  SOURCE_REPO: 'version_test'
+  SOURCE_PATH: 'test.txt'
+
+jobs:
+  update_app_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          path: source
+
+      - name: Extract Version
+        run: |
+          version=$(cat source/${{ env.SOURCE_PATH }})
+          echo "Version: $version" >> $GITHUB_OUTPUT
+      #- uses: actions/checkout@v3
+        #with:
+          #repository: ${{ env.TARGET_REPO }}
+          #path: target
+
+      #- name: Update Chart.yaml
+        #run: |
+          #sed -i "s/version: .*/version: $version/" target/${{ env.TARGET_PATH }}
+
+      #- name: Commit Changes
+        #run: |
+          #git config user.name "GitHub Actions"
+          #git config user.email "actions@github.com"
+          #git add target/${{ env.TARGET_PATH }}
+          #git commit -m "Update AppVersion to $version"
+          #git push origin main
