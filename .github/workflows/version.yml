@@ -30,7 +30,7 @@ jobs:
       - name: Extract Version
         run: |
           ls -lrth
-          # version=$(cat ./${{ env.SOURCE_PATH }})
+          # version=$(cat source/${{ env.SOURCE_PATH }})
           # echo "Version: $version" >> $GITHUB_OUTPUT
       #- uses: actions/checkout@v3
         #with:
