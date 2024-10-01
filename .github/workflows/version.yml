@@ -15,7 +15,7 @@ on:
 
 # Env information to pass into our actions Containers
 env:
-  SOURCE_REPO: 'version_test'
+  SOURCE_REPO: 'pathakas/version_test'
   SOURCE_PATH: 'test.txt'
 
 jobs:
