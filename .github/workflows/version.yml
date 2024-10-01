@@ -29,8 +29,9 @@ jobs:
 
       - name: Extract Version
         run: |
-          version=$(cat ./${{ env.SOURCE_PATH }})
-          echo "Version: $version" >> $GITHUB_OUTPUT
+          ls -lrth
+          # version=$(cat ./${{ env.SOURCE_PATH }})
+          # echo "Version: $version" >> $GITHUB_OUTPUT
       #- uses: actions/checkout@v3
         #with:
           #repository: ${{ env.TARGET_REPO }}
